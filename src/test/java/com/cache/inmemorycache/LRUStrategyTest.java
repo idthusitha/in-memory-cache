@@ -18,7 +18,7 @@ class LRUTest {
 	@BeforeEach
 	void init() {
 		maxSize = 4;
-		storage = new LRU(maxSize);
+		storage = new LRUStrategy(maxSize);
 		for (int i = 0; i < maxSize; i++) {
 			storage.put(i, i);
 		}

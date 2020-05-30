@@ -12,8 +12,8 @@ public class Cache<K, V> {
 	public static String ALGORITHM_ERROR_MESSAGE = "There is no such caching algorithm";
 	private Storage<K, V> storage;
 
-	public static final String LRU = "LRU";
-	public static final String LFU = "LFU";
+	public static final String LRU_STRATEGY = "LRU";
+	public static final String LFU_STRATEGY = "LFU";
 
 	/**
 	 * 
@@ -25,11 +25,11 @@ public class Cache<K, V> {
 			throw new IllegalArgumentException(MAX_SIZE_ERROR_MESSAGE);
 		}
 		switch (algorithm) {
-		case LFU:
-			storage = new LFU<>(cacheMaxSize);
+		case LFU_STRATEGY:
+			storage = new LFUStrategy<>(cacheMaxSize);
 			break;
-		case LRU:
-			storage = new LRU<>(cacheMaxSize);
+		case LRU_STRATEGY:
+			storage = new LRUStrategy<>(cacheMaxSize);
 			break;
 		default:
 			throw new IllegalArgumentException(ALGORITHM_ERROR_MESSAGE);

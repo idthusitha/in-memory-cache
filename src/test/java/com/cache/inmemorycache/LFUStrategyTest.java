@@ -18,7 +18,7 @@ class LFUTest {
 	@BeforeEach
 	void init() {
 		maxSize = 4;
-		storage = new LFU(maxSize);
+		storage = new LFUStrategy(maxSize);
 		for (int i = 0; i < maxSize; i++) {
 			storage.put(i, i);
 		}

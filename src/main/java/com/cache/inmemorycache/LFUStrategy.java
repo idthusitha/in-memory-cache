@@ -9,14 +9,14 @@ import java.util.*;
  * @param <K>
  * @param <V>
  */
-public class LFU<K, V> implements Storage<K, V> {
+public class LFUStrategy<K, V> implements Storage<K, V> {
 
 	private final int CACHE_MAX_SIZE;
 	private HashMap<K, V> storage;
 	private HashMap<K, Long> keyFrequency;
 	private TreeMap<Long, HashSet<K>> sortedFrequencies;
 
-	public LFU(int maxSize) {
+	public LFUStrategy(int maxSize) {
 		CACHE_MAX_SIZE = maxSize;
 		storage = new HashMap<>();
 		keyFrequency = new HashMap<>();

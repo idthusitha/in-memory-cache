@@ -10,7 +10,7 @@ import java.util.Map;
  * @param <K>
  * @param <V>
  */
-public class LRU<K, V> extends LinkedHashMap<K, V> implements Storage<K, V> {
+public class LRUStrategy<K, V> extends LinkedHashMap<K, V> implements Storage<K, V> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +18,7 @@ public class LRU<K, V> extends LinkedHashMap<K, V> implements Storage<K, V> {
 	private static final boolean ACCESS_ORDER = true;
 	private final int CACHE_MAX_SIZE;
 
-	public LRU(int maxSize) {
+	public LRUStrategy(int maxSize) {
 		super(maxSize, LOAD_FACTOR, ACCESS_ORDER);
 		CACHE_MAX_SIZE = maxSize;
 	}
