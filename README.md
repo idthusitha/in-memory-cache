@@ -5,4 +5,4 @@ Create in-memory cache (for caching Objects) with configurable max size and evic
 
 ### High-level architecture diagram of the system, identifying all major components
 
-![Test Image 1](https://github.com/idthusitha/in-memory-cache/blob/master/doc/in-memory.png.png)
+![Test Image 1](https://github.com/idthusitha/in-memory-cache/blob/master/doc/in-memory.png)
