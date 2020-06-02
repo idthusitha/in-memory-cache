@@ -13,36 +13,31 @@ Create in-memory cache (for caching Objects) with configurable max size and evic
    * Gradle 5.0
    * Sprint Boot 2.2.7 
    * Junit Testing
+   * Swagger API
    
 
 ### Build instructions   
 	cd {{ WORKSPACE_PATH }}
 	git clone https://github.com/idthusitha/in-memory-cache.git
 	cd  in-memory-cache
-	gradle clean build
-   
-   
-### API 1.0.0
+	
+	/**WAR file copy into /system/tomcat1/apache-tomcat-9.0.34/webapp	
+	*change the tomcat deploy location in build.gradle file	
+	**/
+	
+	gradle deploy
+	
+### Application Home Page
+   	
+http://localhost:8080/in-memory-cache/ [Click here](http://localhost:8080/in-memory-cache/).
+	
+	
+### Application Swagger API
+	
+http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller [Click here](http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller).
+	
 
-Constructor definition:
-Cache(String algorithm, int cacheMaxSize)
+	
 
-	//LFU
-	Cache cache = new Cache<>("LFU", 5);
-	
-	//LRU
-	Cache cache = new Cache<>("LRU", 5);
-	
-	//LFU
-	Storage<String, String> storage = new LFUStrategy(10);
-	storage.put("TEST_KEY", "TEST_VALUE");
-	storage.get(key); //return the stored value
-	
-	//LFU
-	Storage<String, String> storage = new LRUStrategy(10);
-	storage.put("TEST_KEY", "TEST_VALUE");
-	storage.get(key); //return the stored value
-	
-	
 		
 	

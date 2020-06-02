@@ -3,6 +3,9 @@ package com.cache.inmemorycache;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.cache.inmemorycache.strategy.LRUStrategy;
+import com.cache.inmemorycache.strategy.Storage;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**

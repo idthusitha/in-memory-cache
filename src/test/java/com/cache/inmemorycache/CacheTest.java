@@ -2,6 +2,8 @@ package com.cache.inmemorycache;
 
 import org.junit.jupiter.api.Test;
 
+import com.cache.inmemorycache.strategy.Cache;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**

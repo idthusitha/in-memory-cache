@@ -2,10 +2,11 @@ plugins {
 	id 'org.springframework.boot' version '2.2.7.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'war'
 }
 
 group = 'com.cache'
-version = '0.0.1-SNAPSHOT'
+//version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -13,10 +14,27 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
 	implementation 'org.springframework.boot:spring-boot-starter'
+	
+	//Test API
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	
+	//JSON Object bind to response and request
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.4'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.4'
+	
+	//Swagger API
+	compile 'io.springfox:springfox-swagger2:2.6.1'
+	compile 'io.springfox:springfox-swagger-ui:2.6.1'
+	
+	//JSON
+	compile group: 'net.minidev', name: 'json-smart', version: '2.3'
 }
 
 test {
@@ -25,4 +43,15 @@ test {
 //		junitXml.enabled = true
 //		html.enabled = false
 //	}
+}
+
+def tomcat_home = "/system/tomcat1/apache-tomcat-9.0.34"
+
+task deploy(dependsOn: [clean, build, war]) {
+	println "Copy from ${libsDir.getPath()} into ${tomcat_home}/webapps"
+	copy {
+	  from "build/libs"
+	  into "${tomcat_home}/webapps"
+	  include "*.war"
+	}
 }
