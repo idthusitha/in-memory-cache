@@ -41,9 +41,9 @@ public class LRUStrategy<K, V> extends LinkedHashMap<K, V> implements Storage<K,
 	protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
 		return size() > CACHE_MAX_SIZE;
 	}
-	
+
 	@Override
 	public Map<K, V> getAllData() {
-		return this;
+		return new LinkedHashMap<>(this);
 	}
 }

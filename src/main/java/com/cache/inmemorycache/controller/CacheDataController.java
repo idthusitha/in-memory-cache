@@ -44,13 +44,13 @@ public class CacheDataController {
 	}
 
 	@ApiOperation(value = "Find Cache data")
-	@RequestMapping(value = "/cache/find/{cache_key}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/cache/find/{cache_type}/{cache_key}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public List<CacheData> findCacheDataData(@PathVariable(value = "cache_key") String key,
-			HttpServletResponse response) {
+	public List<CacheData> findCacheDataData(@PathVariable(value = "cache_type") String cacheType,
+			@PathVariable(value = "cache_key") String key, HttpServletResponse response) {
 		List<CacheData> list = null;
 		try {
-			list = cacheDataService.findCacheDataData(key);
+			list = cacheDataService.findCacheDataData(cacheType, key);
 			response.setStatus(HttpServletResponse.SC_OK);
 		} catch (Exception e) {
 			e.printStackTrace();

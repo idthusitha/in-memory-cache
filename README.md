@@ -30,11 +30,15 @@ Create in-memory cache (for caching Objects) with configurable max size and evic
 ### Application Home Page
    	
 http://localhost:8080/in-memory-cache/ [Click here](http://localhost:8080/in-memory-cache/).
+
+![Test Image 2](https://github.com/idthusitha/in-memory-cache/blob/master/doc/home-page.png)
 	
 	
 ### Application Swagger API
 	
 http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller [Click here](http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller).
+
+![Test Image 3](https://github.com/idthusitha/in-memory-cache/blob/master/doc/swagger-api.png)
 	
 
 	

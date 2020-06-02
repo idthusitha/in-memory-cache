@@ -49,11 +49,21 @@
 	    });
 	}
 	
+	function editCacheData(key, cacheType){
+		alert("This is not develop yet ("+cacheType+" : "+key+")");
+	}
+	
+	function deleteCacheData(key, cacheType){
+		alert("This is not develop yet ("+cacheType+" : "+key+")");
+	}
+	
 	function storedCacheData(){
 		var html = "<table class=\"table table-bordered\" style=\"background: white;\" cellSpacing=0 cellPadding=1 width=\"100%\" border=0>";
 		$("#main_box").html('');
+		var keyTemp = $("#key").val() === '' ? 'ALL' : $("#key").val();
+		
 		 $.ajax({
-           url: 'cache/find/'+$("#key").val(),
+           url: 'cache/find/'+$("#cacheType").val()+'/'+keyTemp,
            dataType: 'json',
            type: 'GET',
            success: function(data) {	
@@ -77,8 +87,8 @@
        				$.each(data[i], function (key, dataValue) {
                    		html += "<td >"+data[i][key]+"</td>";
                    	});
-       				html += "<td align=\"center\"><input type=\"button\" onClick=\"editCustomer('"+data[i].userId+"')\" id=\"edit\" value=\"Edit\"/>";
-       				html += "&nbsp;<input type=\"button\" onClick=\"deleteCustomer('"+data[i].userId+"')\" id=\"delete\" value=\"Delete\"/></td>";
+       				html += "<td align=\"center\"><input type=\"button\" onClick=\"editCacheData('"+data[i].key+"', '"+data[i].cacheType+"')\" id=\"edit\" value=\"Edit\"/>";
+       				html += "&nbsp;<input type=\"button\" onClick=\"deleteCacheData('"+data[i].key+"', '"+data[i].cacheType+"')\" id=\"delete\" value=\"Delete\"/></td>";
        				html += "</tr>";
                	});       			
         		
@@ -96,6 +106,9 @@
 		
 		$( "#add" ).click(function() {
 			add();
+		});		
+		$('#cacheType').on('change', function() {
+			storedCacheData();
 		});		
 		
 		storedCacheData();
@@ -131,15 +144,15 @@
 		</tr>
 		<tr>
 			<td>Size</td>			
-			<td><input type="text" id="size" size="5"/></td>			
+			<td><input type="text" id="size" size="5" readonly="readonly" value="5"/></td>			
 		</tr>
 		<tr>
 			<td>KEY</td>			
-			<td><input type="text" id="key" size="50"/></td>			
+			<td><input type="text" id="key" size="30"/></td>			
 		</tr>
 		<tr>
 			<td>VALUE</td>			
-			<td><input type="text" id="value" size="50"/></td>			
+			<td><textarea id="value" name="value" rows="4" cols="50"></textarea></td>			
 		</tr>
 		<tr>			
 			<td></td>

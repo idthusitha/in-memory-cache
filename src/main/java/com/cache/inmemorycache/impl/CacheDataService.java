@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cache.inmemorycache.pojo.CacheData;
-import com.cache.inmemorycache.strategy.Cache;
 import com.cache.inmemorycache.strategy.LFUStrategy;
 import com.cache.inmemorycache.strategy.LRUStrategy;
 import com.cache.inmemorycache.strategy.Storage;
@@ -35,18 +34,13 @@ public class CacheDataService {
 	public CacheData saveCacheDataData(CacheData cacheData) {
 		Properties prop = CommonUtils.getInstance().getProperties();
 
-		try {
-			String MAX_SIZE_ERROR_MESSAGE = prop.getProperty("cache.max.size.error.message");
-			String ALGORITHM_ERROR_MESSAGE = prop.getProperty("cache.algorithm.error.message");
+		String ALGORITHM_ERROR_MESSAGE = prop.getProperty("cache.algorithm.error.message");
 
-			String algorithm = cacheData.getCacheType();
-			Storage<String, String> storage = loadStorage(ALGORITHM_ERROR_MESSAGE, algorithm);
+		String algorithm = cacheData.getCacheType();
+		Storage<String, String> storage = loadStorage(ALGORITHM_ERROR_MESSAGE, algorithm);
 
-			storage.put(cacheData.getKey(), cacheData.getValue());
+		storage.put(cacheData.getKey(), cacheData.getValue());
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return cacheData;
 	}
 
@@ -55,31 +49,25 @@ public class CacheDataService {
 	 * @param key
 	 * @return
 	 */
-	public List<CacheData> findCacheDataData(String key) {
+	public List<CacheData> findCacheDataData(String cacheType, String key) {
 		List<CacheData> list = new ArrayList<>();
 		Properties prop = CommonUtils.getInstance().getProperties();
-		try {
 
-			String ALGORITHM_ERROR_MESSAGE = prop.getProperty("cache.algorithm.error.message");
+		String ALGORITHM_ERROR_MESSAGE = prop.getProperty("cache.algorithm.error.message");
+		Storage<String, String> storage = loadStorage(ALGORITHM_ERROR_MESSAGE, cacheType);
 
-			String algorithm = "LFU";
-			Storage<String, String> storage = loadStorage(ALGORITHM_ERROR_MESSAGE, algorithm);
+		for (String keyTemp : storage.getAllData().keySet()) {
 
-			for (String keyTemp : storage.getAllData().keySet()) {
+			CacheData cacheData = new CacheData();
+			cacheData.setKey(keyTemp);
+			cacheData.setCacheType(cacheType);
+			cacheData.setSize(storage.size());
+			cacheData.setValue(storage.getAllData().get(keyTemp));
+			list.add(cacheData);
 
-				CacheData cacheData = new CacheData();
-				cacheData.setKey(keyTemp);
-				cacheData.setCacheType("LFU");
-				cacheData.setSize(10);
-				cacheData.setValue(storage.getAllData().get(keyTemp));
-				list.add(cacheData);
-				
-				logger.info("keyTemp:  "+keyTemp +" : " + storage.getAllData().get(keyTemp));
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info("Type: " + cacheType + " keyTemp:  " + keyTemp + " : " + storage.getAllData().get(keyTemp));
 		}
+
 		return list;
 	}
 
@@ -90,6 +78,7 @@ public class CacheDataService {
 	 */
 	public CacheData updatCacheDataData(CacheData cacheData) {
 		// update cache data base on the key (remove and adding)
+
 		return null;
 	}
 
@@ -99,6 +88,7 @@ public class CacheDataService {
 	 */
 	public void removeCacheDataData(String cacheDataId) {
 		// remove cache data base on the key
+
 	}
 
 	/**
