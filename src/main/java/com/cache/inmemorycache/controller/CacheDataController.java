@@ -46,7 +46,8 @@ public class CacheDataController {
 	@ApiOperation(value = "Find Cache data")
 	@RequestMapping(value = "/cache/find/{cache_key}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public List<CacheData> findCacheDataData(@PathVariable(value = "cache_key") String key, HttpServletResponse response) {
+	public List<CacheData> findCacheDataData(@PathVariable(value = "cache_key") String key,
+			HttpServletResponse response) {
 		List<CacheData> list = null;
 		try {
 			list = cacheDataService.findCacheDataData(key);
@@ -88,7 +89,8 @@ public class CacheDataController {
 
 	@ApiOperation(value = "Service Check link")
 	@RequestMapping(value = "/servicecheck", method = RequestMethod.GET)
-	public String servicecheck() {
+	public String servicecheck(HttpServletResponse response) {
+		response.setStatus(HttpServletResponse.SC_OK);
 		return "This is the First Message From Remote in-memory-cache!";
 	}
 }

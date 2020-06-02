@@ -1,5 +1,7 @@
 package com.cache.inmemorycache.strategy;
 
+import java.util.Map;
+
 /**
  * 
  * @author thusitha
@@ -13,4 +15,6 @@ public interface Storage<K, V> {
 	V put(K key, V value);
 
 	int size();
+	
+	Map<K, V> getAllData();
 }

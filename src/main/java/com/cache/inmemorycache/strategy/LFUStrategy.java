@@ -2,6 +2,10 @@ package com.cache.inmemorycache.strategy;
 
 import java.util.*;
 
+import org.springframework.stereotype.Service;
+
+import com.cache.inmemorycache.utilities.CommonUtils;
+
 /**
  * 
  * @author thusitha
@@ -9,12 +13,21 @@ import java.util.*;
  * @param <K>
  * @param <V>
  */
+@Service
 public class LFUStrategy<K, V> implements Storage<K, V> {
 
 	private final int CACHE_MAX_SIZE;
 	private HashMap<K, V> storage;
 	private HashMap<K, Long> keyFrequency;
 	private TreeMap<Long, HashSet<K>> sortedFrequencies;
+	private Properties prop = CommonUtils.getInstance().getProperties();
+
+	public LFUStrategy() {
+		CACHE_MAX_SIZE = Integer.parseInt(prop.getProperty("cach.initial.capacity", "0"));
+		storage = new HashMap<>();
+		keyFrequency = new HashMap<>();
+		sortedFrequencies = new TreeMap<>();
+	}
 
 	public LFUStrategy(int maxSize) {
 		CACHE_MAX_SIZE = maxSize;
@@ -73,5 +86,10 @@ public class LFUStrategy<K, V> implements Storage<K, V> {
 	@Override
 	public String toString() {
 		return storage.toString();
+	}
+
+	@Override
+	public Map<K, V> getAllData() {
+		return storage;
 	}
 }

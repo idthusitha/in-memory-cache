@@ -1,7 +1,6 @@
 package com.cache.inmemorycache.swagger;
 
 import static com.google.common.base.Predicates.and;
-import static com.google.common.base.Predicates.not;
 import static com.google.common.base.Predicates.or;
 import static springfox.documentation.builders.PathSelectors.regex;
 
