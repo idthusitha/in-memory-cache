@@ -14,10 +14,17 @@ Create in-memory cache (for caching Objects) with configurable max size and evic
    * Sprint Boot 2.2.7 
    * Junit Testing
    
+
+### Build instructions   
+	cd {{ WORKSPACE_PATH }}
+	git clone https://github.com/idthusitha/in-memory-cache.git
+	cd  in-memory-cache
+	gradle clean build
+   
    
 ### API 1.0.0
 
-Constuctor definition:
+Constructor definition:
 Cache(String algorithm, int cacheMaxSize)
 
 	//LFU
