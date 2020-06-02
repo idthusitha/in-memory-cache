@@ -9,14 +9,20 @@ Create in-memory cache (for caching Objects) with configurable max size and evic
 
 
 ### Prerequisites:
+   * git
    * Java 1.8
-   * Gradle 5.0
-   * Sprint Boot 2.2.7 
-   * Junit Testing
-   * Swagger API
+   * Gradle 5.0  
+   * apache-tomcat-9.0.34
    
 
-### Build instructions   
+### Technology selection:
+   * Java Programming Language
+   * Sprint Boot 2.2.7
+   * Swagger API
+   * Junit Testing
+   
+
+### Build and Deploy instructions   
 	cd {{ WORKSPACE_PATH }}
 	git clone https://github.com/idthusitha/in-memory-cache.git
 	cd  in-memory-cache
@@ -26,6 +32,9 @@ Create in-memory cache (for caching Objects) with configurable max size and evic
 	**/
 	
 	gradle deploy
+	
+	cd {{ TOMCAT_HOME }}/bin
+	sh startup.sh
 	
 ### Application Home Page
    	
@@ -39,6 +48,11 @@ http://localhost:8080/in-memory-cache/ [Click here](http://localhost:8080/in-mem
 http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller [Click here](http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller).
 
 ![Test Image 3](https://github.com/idthusitha/in-memory-cache/blob/master/doc/swagger-api.png)
+
+
+### High-level infrastructure Architecture
+
+
 	
 
 	

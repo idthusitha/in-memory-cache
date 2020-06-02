@@ -46,6 +46,7 @@ public class CacheDataService {
 
 	/**
 	 * 
+	 * @param cacheType
 	 * @param key
 	 * @return
 	 */
@@ -77,7 +78,7 @@ public class CacheDataService {
 	 * @return
 	 */
 	public CacheData updatCacheDataData(CacheData cacheData) {
-		// update cache data base on the key (remove and adding)
+		// update cache data base on the key and cache type (remove and adding)
 
 		return null;
 	}
@@ -87,7 +88,7 @@ public class CacheDataService {
 	 * @param cacheDataId
 	 */
 	public void removeCacheDataData(String cacheDataId) {
-		// remove cache data base on the key
+		// remove cache data base on the key and cache type
 
 	}
 
