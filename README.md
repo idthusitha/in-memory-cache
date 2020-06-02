@@ -53,6 +53,7 @@ http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller [Cl
 ### High-level infrastructure Architecture
 
 
+![Test Image 4](https://github.com/idthusitha/in-memory-cache/blob/master/doc/High-level-infrastructure-Architecture.png)
 	
 
 	
