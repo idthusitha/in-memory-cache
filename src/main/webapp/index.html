@@ -26,7 +26,7 @@
 <script type="text/javascript"> 
 	function reset(){
 		$("#message").val('');		
-	}
+	}	
 	
 	function add(){
 		var cacheData = new Object();
@@ -39,6 +39,9 @@
 		$.ajax({
 	           url: 'cache/save',
 	           dataType: 'json',
+	           headers: {
+	        	    "Authorization": "Basic " + btoa("admin" + ":" + "password")
+	           },
 	           data: JSON.stringify(cacheData),
 		       contentType: 'application/json; charset=utf-8', 
 	           type: 'POST',
@@ -65,6 +68,9 @@
 		 $.ajax({
            url: 'cache/find/'+$("#cacheType").val()+'/'+keyTemp,
            dataType: 'json',
+           headers: {
+        	    "Authorization": "Basic " + btoa("admin" + ":" + "password")
+           },
            type: 'GET',
            success: function(data) {	
         	    
