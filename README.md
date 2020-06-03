@@ -40,6 +40,9 @@ Create in-memory cache (for caching Objects) with configurable max size and evic
    	
 http://localhost:8080/in-memory-cache/ [Click here](http://localhost:8080/in-memory-cache/).
 
+	User Name: admin	
+	Password: password
+
 ![Test Image 2](https://github.com/idthusitha/in-memory-cache/blob/master/doc/home-page.png)
 	
 	
@@ -50,10 +53,15 @@ http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller [Cl
 ![Test Image 3](https://github.com/idthusitha/in-memory-cache/blob/master/doc/swagger-api.png)
 
 
+### Sequence diagram for Cache Save
+
+![Test Image 4](https://github.com/idthusitha/in-memory-cache/blob/master/doc/sequence-diagram-cache-save.png)
+
+
 ### High-level infrastructure Architecture
 
 
-![Test Image 4](https://github.com/idthusitha/in-memory-cache/blob/master/doc/High-level-infrastructure-Architecture.png)
+![Test Image 5](https://github.com/idthusitha/in-memory-cache/blob/master/doc/High-level-infrastructure-Architecture.png)
 	
 
 	
