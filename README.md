@@ -58,5 +58,6 @@ http://localhost:8080/in-memory-cache/swagger-ui.html#/cache-data-controller [Cl
 
 	
 
-		
+### Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.		
 	
