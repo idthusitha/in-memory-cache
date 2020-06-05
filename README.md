@@ -86,6 +86,14 @@ AWS has millions of users all over the world because of better security, quick p
 ### The reasons for Selecting r5.large EC2 instance.
 
 Amazon EC2 R5 instances are the next generation of memory optimized instances for the Amazon Elastic Compute Cloud.  R5 instances are well suited for memory intensive applications such as high performance databases, distributed web scale in-memory caches, mid-size in-memory databases, real time big data analytics, and other enterprise applications. Additionally, R5d, R5dn, and R5ad instances have local storage, offering up to 3.6TB of NVMe-based SSDs.
+
+### The reasons for Selecting r5.large X 2 instances.
+
+If we have only one load balancer, and it fails, our entire system is in trouble. This is known as a single point of failure (SPOF). This applies to hardware load balancers as well as software based load balancers.
+
+### The reasons for Selecting private network.
+
+The benefit of VPC is that it helps in aspects of cloud computing like privacy, security and preventing loss of proprietary data. Let's take a look at some of the basics of a VPC. Subnets: A subnet can be thought of as dividing a large network into smaller networks.
 	
 
 ### Contributing

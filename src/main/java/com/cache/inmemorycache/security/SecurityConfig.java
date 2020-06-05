@@ -1,6 +1,7 @@
 package com.cache.inmemorycache.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,6 +9,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Value("${security.user.name}")
+	private String userName;
+	
+	@Value("${security.user.password}")
+	private String password;
+	
+	@Value("${security.user.role}")
+	private String userRole;
+	
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic();
@@ -15,6 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("admin").password("{noop}password").roles("USER");
+		auth.inMemoryAuthentication().withUser(userName).password("{noop}"+password).roles(userRole);
 	}
 }
