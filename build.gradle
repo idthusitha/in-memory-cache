@@ -48,7 +48,7 @@ test {
 //	}
 }
 
-def tomcat_home = "/system/tomcat1/apache-tomcat-9.0.34"
+def tomcat_home = "/system/tomcat1/apache-tomcat-8.0.36"
 
 task deploy(dependsOn: [clean, build, war]) {
 	println "Copy from ${libsDir.getPath()} into ${tomcat_home}/webapps"
